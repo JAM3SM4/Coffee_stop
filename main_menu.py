@@ -49,8 +49,8 @@ def menu(choices, title="Coffee Stop Menu", prompt="Choose your item: "):
     return answer
 
 def read_menu(filename):
-    f = open(filename)
-    temp = f.readlines()
+    with open(filename) as f:
+        temp = f.readlines()
     result = []
     for item in temp:
         new_item = item.strip()
@@ -70,9 +70,22 @@ def get_order():
     drinks = read_menu("drinks.txt")
     flavors = read_menu("flavors.txt")
     toppings = read_menu("toppings.txt")
-    order["drink"] = menu(drinks, "Erik's drinks", "Choose your drink: ")
-    order["flavor"] = menu(flavors, "Erik's flavors", "Choose your flavor: ")
-    order["topping"] = menu(toppings, "Erik's toppings", "Choose your topping: ")
+
+    drink = menu(drinks, "Coffee Stop drinks", "Choose your drink: ")
+    if drink == '':
+        return {}
+    order["drink"] = drink
+
+    flavor = menu(flavors, "Coffee Stop flavors", "Choose your flavor: ")
+    if flavor == '':
+        return {}
+    order["flavor"] = flavor
+
+    topping = menu(toppings, "Coffee Stop toppings", "Choose your topping: ")
+    if topping == '':
+        return {}
+    order["topping"] = topping
+
     return order
 
 def print_order(order):
@@ -83,23 +96,17 @@ def print_order(order):
     print("Thank-you for your order from Coffee Stop")
     return
 
-def save_order(orders, filename):
-    f = open("orders.json", "w")
-    json.dump(orders, f, indent=4)
-    return
-
 def load_orders(filename):
     if os.path.exists(filename):
-        f = open(filename, "r")
-        orders = json.load(f)
+        with open(filename, "r") as f:
+            orders = json.load(f)
         return orders
     else:
-        orders = []
-        return orders
+        return []
 
-def save_orders(orders, filename) :
-    f = open(filename, "w")
-    json.dump(orders, f, indent=4)
+def save_orders(orders, filename):
+    with open(filename, "w") as f:
+        json.dump(orders, f, indent=4)
     return
 
 orders = load_orders("orders.json")

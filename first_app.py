@@ -21,7 +21,7 @@ def order():
     if request.method == 'POST':
         drink = request.form['drink']
         print("Drink: ", drink)
-        return render_template("print.html", drink=drink
+        return render_template("print.html", drink=drink)
     return render_template("forms.html")
 
 

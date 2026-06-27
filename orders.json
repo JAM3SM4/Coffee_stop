@@ -15,6 +15,36 @@
         "name": "John",
         "drink": "decaf",
         "flavor": "plain",
-        "topping": "cinnamin"
+        "topping": "cinnamon"
+    },
+    {
+        "name": "James",
+        "drink": "coffee",
+        "flavor": "vanilla",
+        "topping": "caramel"
+    },
+    {
+        "name": "james",
+        "drink": "coffee",
+        "flavor": "plain",
+        "topping": "cinnamon"
+    },
+    {
+        "name": "lucy",
+        "drink": "decaf",
+        "flavor": "vanilla",
+        "topping": "chocolate"
+    },
+    {
+        "name": "kim",
+        "drink": "hot chocolate",
+        "flavor": "caramel",
+        "topping": "cinnamon"
+    },
+    {
+        "name": "Jin",
+        "drink": "latte",
+        "flavor": "peppermint",
+        "topping": "vanilla powder"
     }
 ]
